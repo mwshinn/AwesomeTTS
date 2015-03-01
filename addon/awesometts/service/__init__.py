@@ -40,6 +40,7 @@ __all__ = [
     'Say',
     'SpanishDict',
     'TTSAPICom',
+    'Wiki',
     'Yandex',
 ]
 
@@ -57,4 +58,5 @@ from .sapi5js import SAPI5JS
 from .say import Say
 from .spanishdict import SpanishDict
 from .ttsapicom import TTSAPICom
+from .wiki import Wiki
 from .yandex import Yandex
