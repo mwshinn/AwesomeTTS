@@ -47,7 +47,13 @@ LOOKUP = {
     'pt': ("Portuguese", ['pt', 'pt-br', 'pt-pt']),
 }
 
-RE_FILE_LINK = re_compile(r'href="/wiki/File:([^"]+\.ogg)"')
+
+# Pattern for matching links to audio files. Intentionally excludes files that
+# are longer than 59 seconds (which are usually articles being spoken, rather
+# than the spoken version of what the user searched for).
+
+RE_FILE_LINK = re_compile(r'href="/wiki/File:([^"]+\.ogg)".*'
+                          r'sound file, \d{1,2}(\.\d)? s')
 
 
 class Wiki(Service):
