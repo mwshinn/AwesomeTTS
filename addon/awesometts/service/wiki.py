@@ -45,6 +45,7 @@ LOOKUP = {
     'fr': ("French", ['fr']),
     'it': ("Italian", ['it']),
     'pt': ("Portuguese", ['pt', 'pt-br', 'pt-pt']),
+    'zh': ("Chinese", ['zh']),
 }
 
 
@@ -141,6 +142,11 @@ class Wiki(Service):
             # fallback using the loose prefix and "anywhere in title" match
             filename = search('intitle:"%s" intitle:.ogg prefix:file:%s' %
                               (text, primary))
+
+            if not filename:
+                # try one final time using the entire text area
+                filename = search('%s intitle:.ogg prefix:file:%s' %
+                                  (text, primary))
 
         if not filename:
             raise IOError(
