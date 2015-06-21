@@ -572,7 +572,7 @@ class Configurator(Dialog):
         shortcut.toggled.connect(
             lambda is_down: (
                 shortcut.setText("press keystroke"),
-                shortcut.setFocus(),  # needed for OS X if text inputs present
+                self.setFocus(),  # TODO focus buggy on OS X; verify OK there
             ) if is_down
             else shortcut.setText(key_combo_desc(shortcut.atts_value))
         )
